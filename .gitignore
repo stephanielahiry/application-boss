@@ -1,0 +1,5 @@
+.DS_Store
+.angular/
+dist/
+node_modules/
+
