@@ -20,25 +20,6 @@ app.MapPost("/jobs", (Job job) =>
     return TypedResults.Created("/jobs/{id}", job);
 });
 
-// app.MapPut("/jobs/{id}", (int id, Job updatedJob, List<Job> jobs) =>
-// {
-//     var jobIndex = jobs.FindIndex(j => j.Id == id);
-//     if (jobIndex == -1) return Results.NotFound();
-
-//     updatedJob = updatedJob with { Id = id };
-//     jobs[jobIndex] = updatedJob;
-//     return Results.NoContent();
-// });
-
-// app.MapDelete("/jobs/{id}", (int id, List<Job> jobs) =>
-// {
-//     var job = jobs.FirstOrDefault(j => j.Id == id);
-//     if (job is null) return Results.NotFound();
-
-//     jobs.Remove(job);
-//     return Results.NoContent();
-// });
-
 app.Run();
 
 public record Job(
