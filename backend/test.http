@@ -1,0 +1,16 @@
+GET http://localhost:5121/jobs
+
+###
+
+POST http://localhost:5121/jobs
+Content-Type: application/json
+
+{
+    "id": 1,
+    "company": "Google",
+    "position": "Software Engineer"
+}
+
+###
+
+GET http://localhost:5121/jobs/1
