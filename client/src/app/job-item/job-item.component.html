@@ -1,1 +1,10 @@
-<p>job-item works!</p>
+<div>{{ job.title }}</div>
+<div>{{ job.url }}</div>
+<div>{{ job.platform }}</div>
+<div>{{ job.isEasyApply }}</div>
+<div>{{ job.applicantNumber }}</div>
+<div>{{ job.postAge }}</div>
+<div>{{ job.usedJobscan }}</div>
+<div>{{ job.jobscanPercentage }}</div>
+<div>{{ job.hasContactedEmployee }}</div>
+<button (click)="onSubmit(job.id)">Delete Job</button>

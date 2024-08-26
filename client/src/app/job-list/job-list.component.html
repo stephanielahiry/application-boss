@@ -1,1 +1,5 @@
-<p>job-list works!</p>
+@for (job of jobsService.jobs(); track job.id) {
+    <app-job-item [job]="job"></app-job-item>
+} @empty {
+  <li> There are no jobs.</li>
+}

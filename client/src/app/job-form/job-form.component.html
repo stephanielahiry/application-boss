@@ -1,1 +1,117 @@
-<p>job-form works!</p>
+<form 
+    [formGroup]="jobForm"
+    (submit)="submitJobForm()">
+
+    <div>
+        <label for="title">Job Title</label>
+        <input
+          formControlName="title"
+          type="text"
+          id="title"
+          name="textbox"
+          aria-labelledby="title"
+          placeholder="Enter your text here"
+        />
+    </div>
+
+    <div>
+        <label for="url">Job Posting Url</label>
+        <input
+          formControlName="url"
+          type="text"
+          id="url"
+          name="url"
+          aria-labelledby="url"
+          placeholder="Enter your text here"
+        />
+    </div>
+
+    <div>
+        <label for="platform">Job Platform</label>
+        <select formControlName="platform" id="platform">
+            <option value="LinkedIn">LinkedIn</option>
+            <option value="Company Website via LinkedIn">Company Website via LinkedIn</option>
+            <option value="Company Website">Company Website</option>
+        </select>
+    </div>
+
+    @if(jobForm.get('platform')?.value === "LinkedIn"){
+
+        <div>
+            <label for="easyApply">Did you use LinkedIn Easy Apply?</label>
+            <label>
+                <input 
+                    type="checkbox" 
+                    formControlName="isEasyApply" 
+                    id="easyApply">
+            </label>
+        </div>
+
+    } 
+    
+    @if (jobForm.get('platform')?.value === "Company Website via LinkedIn" || jobForm.get('platform')?.value === "LinkedIn") {
+
+        <div>
+            <label for="applicantNumber">Applicant Number</label>
+            <input
+              formControlName="applicantNumber"
+              type="text"
+              id="applicantNumber"
+              name="applicantNumber"
+              aria-labelledby="applicantNumber"
+              placeholder="Enter your text here"
+            />
+        </div>
+
+        <div>
+            <label for="postAge">Age of Posting at Time of Application</label>
+            <input
+              formControlName="postAge"
+              type="text"
+              id="postAge"
+              name="postAge"
+              aria-labelledby="postAge"
+              placeholder="Enter your text here"
+            />
+        </div>
+
+    }
+
+    <div>
+        <label for="usedJobscan">Did you use Jobscan?</label>
+        <label class="toggle">
+            <input 
+            type="checkbox" 
+                formControlName="usedJobscan" 
+                id="usedJobscan">
+        </label>
+    </div>
+
+    @if(jobForm.get('usedJobscan')?.value){
+
+        <div>
+            <label for="jobscanPercentage">Jobscan Resume Match Percentage</label>
+            <input
+              formControlName="jobscanPercentage"
+              type="text"
+              id="jobscanPercentage"
+              name="jobscanPercentage"
+              aria-labelledby="jobscanPercentage"
+              placeholder="Enter your text here"
+            />
+        </div>
+
+    }
+
+    <div>
+        <label for="contactEmployee">Did you contact an employee from this company?</label>
+        <label>
+            <input 
+                type="checkbox" 
+                formControlName="hasContactedEmployee" 
+                id="contactEmployee">
+        </label>
+    </div>
+
+    <button type="submit" [disabled]="!jobForm.valid">Submit</button>
+</form>
